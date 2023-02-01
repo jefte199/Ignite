@@ -1,0 +1,17 @@
+{
+  "name": "introduction",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "node src/server.js",
+    "stream": "node streams/fundamentals.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

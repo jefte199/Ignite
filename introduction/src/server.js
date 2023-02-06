@@ -15,12 +15,12 @@ const server = http.createServer(async (req, res) => {
     return res.end(JSON.stringify(users));
   }
   if (method === 'POST' && url === '/users') {
-    const { name, email } = req.body;
+//    const { id, name, email } = [1, "user", "user@use.com"];
 
     const user = {
       id: 1,
-      name,
-      email
+      name: "user",
+      email: "use@use.com"
     }
 
     database.insert('users', user)

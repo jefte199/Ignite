@@ -1,11 +1,12 @@
-interface User {
-  age: number;
-}
+import fastify from 'fastify';
 
-function calcAge(user: User) {
-  return new Date().getFullYear() - user.age
-}
+const app = fastify();
 
-console.log(calcAge({
-  age: 1996.2
-}))
+app.get('/', () => {
+  return 'hellow word'
+})
+
+app.listen({ port: 3333, })
+  .then(() => {
+    console.log(`HTTP Server in port ${3333}`)
+  })

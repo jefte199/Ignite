@@ -15,21 +15,25 @@ export function Home() {
         Sexta, 31 de Março de 2023
       </Text>
 
-      <TextInput
-        style={styles.input}
-        placeholder='Name'
-        placeholderTextColor='#d1d1d1'
-      />
-      <TouchableOpacity
-        style={styles.button}
-        onPress={handleAdd}
+      <View
+        style={styles.form}
       >
-        <Text
-          style={styles.buttonText}
+        <TextInput
+          style={styles.input}
+          placeholder='Name'
+          placeholderTextColor='#d1d1d1'
+        />
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleAdd}
         >
-          +
-        </Text>
-      </TouchableOpacity>
+          <Text
+            style={styles.buttonText}
+          >
+            +
+          </Text>
+        </TouchableOpacity>
+      </View>
     </View>
   )
 }

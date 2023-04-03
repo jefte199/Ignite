@@ -1,9 +1,9 @@
-import { Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Text, View, TextInput, TouchableOpacity, ScrollView } from 'react-native';
 import { Participant } from '../../Components/Participant';
 import { styles } from './styles';
 
 export function Home() {
-  const person = [ 'Jefté', 'Jesus', 'Deus', 'Espirito' ]
+  const person = ['Jefté', 'Jesse', 'Jairo', 'Jerusa', 'Jefté', 'Jesse', 'Jairo', 'Jerusa', 'Jefté', 'Jesse', 'Jairo', 'Jerusa']
   function handleAdd() {
     console.log("add person")
   }
@@ -41,11 +41,13 @@ export function Home() {
           </Text>
         </TouchableOpacity>
       </View>
-      {
-        person.map((item: string, index: number) => {
-          return <Participant key={index} name={item} handleRemove={() => handleRemove(item)} />
-        })        
-      }
+      <ScrollView showsVerticalScrollIndicator={false}>
+        {
+          person.map((item: string, index: number) => {
+            return <Participant key={index} name={item} handleRemove={() => handleRemove(item)} />
+          })
+        }
+      </ScrollView>
     </View>
   )
 }

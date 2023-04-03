@@ -2,14 +2,11 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import { styles } from './style';
 
 interface props {
-  name: string
+  name: string;
+  handleRemove: () => void;
 }
 
-export function Participant ({ name }: props) {
-  function handleAdd() {
-    console.log("Click")
-  }
-
+export function Participant ({ name, handleRemove }: props) {
   return (
     <View style={styles.container}>
       <Text style={styles.name}>
@@ -18,7 +15,7 @@ export function Participant ({ name }: props) {
 
       <TouchableOpacity
           style={styles.button}
-          onPress={handleAdd}
+          onPress={handleRemove}
         >
           <Text
             style={styles.buttonText}

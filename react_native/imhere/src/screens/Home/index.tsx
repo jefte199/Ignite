@@ -3,9 +3,15 @@ import { Participant } from '../../Components/Participant';
 import { styles } from './styles';
 
 export function Home() {
+  const person = [ 'Jefté', 'Jesus', 'Deus', 'Espirito' ]
   function handleAdd() {
-    console.log("Click")
+    console.log("add person")
   }
+
+  function handleRemove(name: string) {
+    console.log(`remove ${name}`)
+  }
+
   return (
     <View style={styles.container}>
       <Text style={styles.eventName}>
@@ -35,10 +41,11 @@ export function Home() {
           </Text>
         </TouchableOpacity>
       </View>
-
-      <Participant name='Jefté' />
-      <Participant name='Jerusa' />
-      <Participant name='Joana' />
+      {
+        person.map((item: string, index: number) => {
+          return <Participant key={index} name={item} handleRemove={() => handleRemove(item)} />
+        })        
+      }
     </View>
   )
 }

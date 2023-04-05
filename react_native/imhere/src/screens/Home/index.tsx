@@ -3,7 +3,7 @@ import { Participant } from '../../Components/Participant';
 import { styles } from './styles';
 
 export function Home() {
-  const person = ['Jefté', 'Jesse', 'Jairo', 'Jerusa', 'Jefté', 'Jesse', 'Jairo', 'Jerusa', 'Jefté', 'Jesse', 'Jairo', 'Jerusa']
+  const person = ['Jefté', 'Jesse', 'Jairo', 'Jerusa', 'Joana', 'Jadi', 'Miriam', 'Raimundo', 'Samara', 'Saulo', 'Jeú', 'Maquir']
   function handleAdd() {
     console.log("add person")
   }
@@ -42,23 +42,22 @@ export function Home() {
         </TouchableOpacity>
       </View>
       <FlatList
-        showsVerticalScrollIndicator={false}
-        ListEmptyComponent={() => (
-          <Text style={styles.buttonText}>
-            Nenhum cadastro encontrado
-          </Text>
-        )}
         data={person}
         keyExtractor={item => item}
         renderItem={({ item }) => {
           return <Participant
             key={item}
             name={item}
-            handleRemove={() => handleRemove(item)}
+            handleRemove={() => handleRemove(`${item}`)}
           />
         }}
+        showsVerticalScrollIndicator={false}
+        ListEmptyComponent={() => (
+          <Text style={styles.buttonText} >
+            Ainda não a person
+          </Text>
+        )}
       />
-
     </View>
   )
 }

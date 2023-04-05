@@ -19,7 +19,7 @@ export function Home() {
     return Alert.alert("Remove", `Deseja Remover ${name}?`, [
       {
         text: 'sim',
-        onPress: () => Alert.alert('Deletado!', `Usuario ${name} foi removido`)
+        onPress: () => setParticipants(oldStats => Participants.filter(item => item !== name))
       },
       {
         text: 'não',

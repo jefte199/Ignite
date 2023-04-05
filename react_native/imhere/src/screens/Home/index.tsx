@@ -1,14 +1,18 @@
+import React from 'react';
 import { Text, View, TextInput, TouchableOpacity, FlatList, Alert } from 'react-native';
 import { Participant } from '../../Components/Participant';
 import { styles } from './styles';
 
 export function Home() {
-  const person = ['Jefté', 'Jesse', 'Jairo', 'Jerusa', 'Joana', 'Jadi', 'Miriam', 'Raimundo', 'Samara', 'Saulo', 'Jeú', 'Maquir']
+  const [Participants, setParticipants] = React.useState<string[]>([]);
+  const [ParticipantsName, setParticipantsName] = React.useState<string>('');
+
   function handleAdd() {
-    if (person.includes("Jefté")){
+    if (Participants && Participants.includes(ParticipantsName)) {
       return Alert.alert("Participante", "Já Existe esse participante")
     }
-    console.log("add person")
+    setParticipants(prevState => [...prevState, ParticipantsName]);
+    setParticipantsName('');
   }
 
   function handleRemove(name: string) {
@@ -41,6 +45,8 @@ export function Home() {
           style={styles.input}
           placeholder='Name'
           placeholderTextColor='#d1d1d1'
+          onChangeText={e => { setParticipantsName(e) }}
+          value={ParticipantsName}
         />
         <TouchableOpacity
           style={styles.button}
@@ -54,7 +60,7 @@ export function Home() {
         </TouchableOpacity>
       </View>
       <FlatList
-        data={person}
+        data={Participants}
         keyExtractor={item => item}
         renderItem={({ item }) => {
           return <Participant
@@ -66,7 +72,7 @@ export function Home() {
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
           <Text style={styles.buttonText} >
-            Ainda não a person
+            Ainda não a Participants
           </Text>
         )}
       />

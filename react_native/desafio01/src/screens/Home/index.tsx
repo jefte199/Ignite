@@ -1,14 +1,18 @@
 import React from 'react';
 import { Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
+import { Task } from '../../Components/Task';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { styles } from './styles';
 const logo = require('../../../assets/Logo.png');
 
 export function Home() {
   const [taskInput, setTaskInput] = React.useState<string>('');
+  const [Opt, setOpt] = React.useState<boolean>(false);
+
   const addTask = () => {
     return console.log(taskInput)
   }
+
   return (
     <View style={styles.container}>
       <View style={styles.containerTop}>
@@ -20,7 +24,7 @@ export function Home() {
           <TextInput
             style={styles.input}
             placeholder='Tarefa'
-            placeholderTextColor='#d1d1d1'
+            placeholderTextColor='#737373'
             onChangeText={e => { setTaskInput(e) }}
           />
           <TouchableOpacity
@@ -35,19 +39,20 @@ export function Home() {
       </View>
 
       <View style={styles.options}>
-          <TouchableOpacity onPress={addTask}>
-            <Text style={{ color: '#4EA8DE' }} >
-              Criadas
-            </Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={addTask}>
+          <Text style={{ color: '#4EA8DE' }} >
+            Criadas
+          </Text>
+        </TouchableOpacity>
 
-          <TouchableOpacity onPress={addTask}>
-            <Text style={{ color: '#5E60CE' }} >
-              Concluidas
-            </Text>
-          </TouchableOpacity>
+        <TouchableOpacity onPress={addTask}>
+          <Text style={{ color: '#5E60CE' }} >
+            Concluidas
+          </Text>
+        </TouchableOpacity>
+      </View>
 
-        </View>
+      <Task />
 
     </View>
   );

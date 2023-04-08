@@ -55,5 +55,6 @@ export const styles = StyleSheet.create({
     transform: [{ translateY: 25 }],
     width: '100%',
     flexDirection: 'row',
-  }
+    marginBottom: '12%',
+  },
 });

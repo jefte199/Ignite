@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, TextInput, View, Image, TouchableOpacity } from 'react-native';
+import { Text, TextInput, View, Image, TouchableOpacity, FlatList, Alert } from 'react-native';
 import { Task } from '../../Components/Task';
 import Icon from 'react-native-vector-icons/AntDesign';
 import { styles } from './styles';
@@ -7,10 +7,22 @@ const logo = require('../../../assets/Logo.png');
 
 export function Home() {
   const [taskInput, setTaskInput] = React.useState<string>('');
-  const [Opt, setOpt] = React.useState<boolean>(false);
+  const [myTasks, setMyTasks] = React.useState<string[]>([]);
+  const [CountCreate, setCountCreate] = React.useState<number>(0);
+  const [CountCheck, setCountCheck] = React.useState<number>(0);
 
   const addTask = () => {
-    return console.log(taskInput)
+    if (myTasks && myTasks.includes(taskInput)) {
+      return Alert.alert("Tarefa já cadastrada", "Escolha outra tarefa")
+    }
+    setMyTasks(preState => [...preState, taskInput])
+    setCountCreate(CountCreate + 1)
+    //    setTaskInput('');
+  }
+
+  const removeTask = (task: string) => {
+    setMyTasks(preStatus => myTasks.filter(item => item !== task))
+    setCountCreate(CountCreate - 1)
   }
 
   return (
@@ -39,21 +51,38 @@ export function Home() {
       </View>
 
       <View style={styles.options}>
-        <TouchableOpacity onPress={addTask}>
+        <TouchableOpacity>
           <Text style={{ color: '#4EA8DE' }} >
-            Criadas
+            Criadas <Text style={{ color: '#FFF' }} >{CountCreate}</Text>
           </Text>
         </TouchableOpacity>
 
-        <TouchableOpacity onPress={addTask}>
+        <TouchableOpacity>
           <Text style={{ color: '#5E60CE' }} >
-            Concluidas
+            Concluidas <Text style={{ color: '#FFF' }} >{CountCheck}</Text>
           </Text>
         </TouchableOpacity>
       </View>
 
-      <Task />
-
+      <FlatList
+        data={myTasks}
+        keyExtractor={(item, index) => item}
+        showsVerticalScrollIndicator={false}
+        renderItem={({ item }) => {
+          return <Task
+            key={item}
+            tasks={item}
+            CountCheck={CountCheck}
+            setCountCheck={setCountCheck}
+            removeTask={() => removeTask(item)}
+          />
+        }}
+        ListEmptyComponent={() => (
+          <Text style={styles.buttonText} >
+            Ainda não a Tarefas
+          </Text>
+        )}
+      />
     </View>
   );
 }

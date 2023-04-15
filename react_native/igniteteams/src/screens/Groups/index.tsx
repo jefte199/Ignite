@@ -1,4 +1,7 @@
-import { Container, Title } from './styles';
+import {
+  Container,
+  Title,
+} from './styles';
 
 export function Group() {
   return (

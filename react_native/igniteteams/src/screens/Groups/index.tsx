@@ -6,7 +6,7 @@ import {
 export function Group() {
   return (
     <Container>
-      <Title>Group</Title>
+
     </Container>
   );
 }

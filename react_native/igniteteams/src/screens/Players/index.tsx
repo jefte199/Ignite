@@ -3,6 +3,7 @@ import { Header } from '@components/Header';
 import { Highlith } from '@components/Highlight/inde';
 import { ButtonIcon } from '@components/ButtonIcon';
 import { Input } from '@components/Input';
+import { Filter } from '@components/Filter';
 
 export function Players() {
   return (
@@ -23,6 +24,10 @@ export function Players() {
           type='PRIMARY'
         />
       </Form>
+
+      <Filter
+        title="Time A" 
+        isAction={true}/>
     </Container>
   )
 }

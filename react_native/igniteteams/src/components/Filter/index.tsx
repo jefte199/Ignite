@@ -3,13 +3,12 @@ import { Container, Title, FilterStyleProps } from "./styles";
 
 type Props = TouchableOpacityProps & FilterStyleProps & {
   title: string;
-  isAction?: boolean;
 }
 
-export function Filter({ title, isAction, ...rest }: Props) {
+export function Filter({ title, isAction = false, ...rest }: Props) {
   return (
     <Container
-      isAction={true}
+      isAction={isAction}
       {...rest}>
 
       <Title>

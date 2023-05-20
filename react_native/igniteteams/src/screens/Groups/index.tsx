@@ -7,7 +7,7 @@ import { GroupCard } from '@components/GroupCard';
 import { ListEmpty } from "@components/ListEmpty";
 import { Button } from "@components/Button";
 
-export function Group() {
+export function Groups() {
   const [groups, setGroups] = useState([]);
 
   return (

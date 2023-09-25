@@ -18,6 +18,8 @@
     "typescript": "^5.2.2"
   },
   "dependencies": {
-    "fastify": "^4.23.2"
+    "fastify": "^4.23.2",
+    "knex": "^2.5.1",
+    "sqlite3": "^5.1.6"
   }
 }
